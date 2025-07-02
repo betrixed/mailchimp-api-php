@@ -12,9 +12,12 @@ use \Exception;
 class MailchimpAPIException extends Exception {
 
   /**
-   * @inheritdoc
+   * 
+   * @param string $message
+   * @param int $code
+   * @param Exception|null $previous
    */
-  public function __construct(string $message = "", $code = 0, Exception $previous = NULL) {
+  public function __construct(string $message = "", int $code = 0, ?Exception $previous = NULL) {
     // Construct message from JSON if required.
     if (substr($message, 0, 1) == '{') {
       $message_obj = json_decode($message);
